@@ -1,0 +1,103 @@
+#macro(pager $url $pageNum $currentPage $count $data)
+##pageNum总页数,currentPage当前页，url请求地址，count总条数，data参数
+
+#set($startPage = 0)
+#set($endPage = $!{pageNum})
+#set($pageLen = 5)
+#set($lineSize= 20)
+<div class="row-fluid">
+<div class="span5">
+<div class="dataTables_info" id="sample_1_info">当前第$!{currentPage}页 共$!{pageNum}页 每页显示$!{lineSize}条 共有$!{count}条</div>
+</div>
+<div class="span7">
+<div class="dataTables_paginate paging_bootstrap pagination ">
+<ul>
+
+##首页标签
+#if($!{currentPage}>1)
+<li><a href="$!{url}?currentPage=1&lineSize=$!{lineSize}$!{data}">首页</a></li>
+#else
+<li class="disabled"><a>首页</a></li>
+#end
+##上一页标签
+#if($!{currentPage}<=1)
+<li class="active"><a>«</a></li>
+#else
+#set($page=$!{currentPage} - 1)
+<li><a href="$!{url}?currentPage=$!{page}&lineSize=$!{lineSize}$!{data}">«</a></li>
+#end
+
+##中间 显示页 
+##如果总页数小于等于9
+#if($!{pageNum} <= 9)
+	#foreach($p in [1..$!{pageNum}])
+		#if($!{currentPage}==$!{p})
+		<li class="active"><a>$!{p}</a></li>
+		#else
+		<li><a href="$!{url}?currentPage=$!{p}&lineSize=$!{lineSize}$!{data}">$!{p}</a></li>
+		#end
+	#end
+##如果总页数大于9
+#else
+##如果当前页在前5页之内
+	#if($!{currentPage}<5)
+		#foreach($p in [1..9])
+			#if($!{currentPage}==$!{p})
+			<li class="active"><a>$!{p}</a></li>
+			#else
+			<li><a href="$!{url}?currentPage=$!{p}&lineSize=$!{lineSize}$!{data}">$!{p}</a></li>
+			#end
+		#end
+	#end
+##如果当前页在最后5页之内
+	#if($!{currentPage}>=$!{pageNum} - 4)
+	#set($s = $!{pageNum} - 8)
+		#foreach($p in [$!{s}..$!{pageNum}])
+			#if($!{currentPage}==$!{p})
+			<li class="active"><a>$!{p}</a></li>
+			#else
+			<li><a href="$!{url}?currentPage=$!{p}&lineSize=$!{lineSize}$!{data}">$!{p}</a></li>
+			#end
+		#end
+	#end
+##如果当前页不在前5页和最后5页之内
+	#if($!{currentPage} - 4 > 0 && $!{pageNum} - $!{currentPage} > 4)
+	#set($s = $!{currentPage} - 4)
+	#set($e = $!{currentPage} + 4)
+		#foreach($p in [$!{s}..$!{e}])
+			#if($!{currentPage}==$!{p})
+			<li class="active"><a>$!{p}</a></li>
+			#else
+			<li><a href="$!{url}?currentPage=$!{p}&lineSize=$!{lineSize}$!{data}">$!{p}</a></li>
+			#end
+		#end
+	#end
+#end
+
+##下一页标签
+#if($!{currentPage}>=$!{pageNum})
+<li class="active"><a>»</a></li>
+#else
+#set($page=$!{currentPage} + 1)
+<li><a href="$!{url}?currentPage=$!{page}&lineSize=$!{lineSize}$!{data}">»</a></li>
+#end
+##尾页
+#if($!{currentPage}<$!{pageNum})
+<li><a href="$!{url}?currentPage=$!{endPage}&lineSize=$!{lineSize}$!{data}">尾页</a></li>
+#else
+<li class="disabled"><a>尾页</a></li>
+#end
+<span class="jumptoTip">到第</span><input id="form" type="text" style="width:40px;height:30px" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"/><span class="jumptoTip">&nbsp;页</span>
+<input type="button" id="index"  onclick="index()" value="确定" style="margin-bottom:10px;" /> 
+</ul>
+</div>
+</div>
+</div>
+<script>
+    function index(){
+    	var form=$("#form").val();
+        location.href="$!{url}?currentPage="+ form + "&lineSize=$!{lineSize}$!{data}";
+    }
+
+</script>
+#end

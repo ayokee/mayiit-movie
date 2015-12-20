@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>睿搜海购后台管理</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="admin/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="admin/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="admin/assets/bootstrap/css/bootstrap-fileupload.css" rel="stylesheet" />
+    <link href="admin/css/style.css" rel="stylesheet" />
+    <link href="admin/css/style_responsive.css" rel="stylesheet" />
+    <link href="admin/css/style_default.css" rel="stylesheet" id="style_color" />
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="fixed-top">
+<!-- BEGIN HEADER -->
+#include("include/top.vm")
+<!-- END HEADER -->
+<!-- BEGIN CONTAINER -->
+<div id="container" class="row-fluid">
+    <!-- BEGIN SIDEBAR -->
+    <div id="sidebar" class="nav-collapse collapse">
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+        <div class="sidebar-toggler hidden-phone"></div>
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+        <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+        <div class="navbar-inverse">
+            <form class="navbar-search visible-phone">
+                <input type="text" class="search-query" placeholder="搜索" />
+            </form>
+        </div>
+        <!-- END RESPONSIVE QUICK SEARCH FORM -->
+
+        #include("include/leftmenu.vm")
+    </div>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN PAGE -->
+    <div id="main-content">
+        <!-- BEGIN PAGE CONTAINER-->
+        <div class="container-fluid">
+            <!-- BEGIN PAGE HEADER-->
+            <div class="row-fluid">
+                <div class="span12">
+                    <!-- BEGIN THEME CUSTOMIZER-->
+                    <div id="theme-change" class="hidden-phone">
+                        <i class="icon-cogs"></i>
+                        <span class="settings">
+                            <span class="text">Theme:</span>
+                            <span class="colors">
+                                <span class="color-default" data-style="default"></span>
+                                <span class="color-gray" data-style="gray"></span>
+                                <span class="color-purple" data-style="purple"></span>
+                                <span class="color-navy-blue" data-style="navy-blue"></span>
+                            </span>
+                        </span>
+                    </div>
+                    <!-- END THEME CUSTOMIZER-->
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                    <h3 class="page-title">
+                        错误页面
+                        <small>error page sample</small>
+                    </h3>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+                        </li>
+                        <li>
+                            <a href="#">系统设置</a> <span class="divider">&nbsp;</span>
+                        </li>
+                        <li><a href="#">500 错误页面</a><span class="divider-last">&nbsp;</span></li>
+                    </ul>
+                    <!-- END PAGE TITLE & BREADCRUMB-->
+                </div>
+            </div>
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN PAGE CONTENT-->
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="space20"></div>
+                    <div class="space20"></div>
+                    <div class="widget-body">
+                        <div class="error-page" style="min-height: 800px">
+                            <img src="admin/img/500.png" alt="500 error">
+                            <h1>
+                                <strong>500!</strong> <br/>
+                                哎呀!发生了一些错误。
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PAGE CONTENT-->
+        </div>
+        <!-- END PAGE CONTAINER-->
+    </div>
+    <!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN FOOTER -->
+#include("include/bottom.vm")
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS -->
+<!-- Load javascripts at bottom, this will reduce page load time -->
+<script src="admin/js/jquery-1.8.3.min.js"></script>
+<script src="admin/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="admin/js/jquery.blockui.js"></script>
+<script type="text/javascript" src="admin/assets/uniform/jquery.uniform.min.js"></script>
+<script src="admin/js/scripts.js"></script>
+<script>
+    jQuery(document).ready(function() {
+        // initiate layout and plugins
+        App.init();
+    });
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

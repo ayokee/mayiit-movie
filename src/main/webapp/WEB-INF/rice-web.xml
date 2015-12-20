@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<context:component-scan base-package="com.mayiit.movie" />
+
+
+	<bean id="contentNegotiationManager"
+		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="favorPathExtension" value="false" />
+		<property name="favorParameter" value="true" />
+		<property name="ignoreAcceptHeader" value="true" />
+		<property name="mediaTypes">
+			<value>
+				json=application/json
+				excel=application/vnd.ms-excel
+			</value>
+		</property>
+	</bean>
+
+	<!-- volecity 模板加载 -->
+	<bean id="velocityConfig"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath" value="WEB-INF/velocity/" />
+		<property name="configLocation" value="/WEB-INF/velocity.properties"></property>
+	</bean>
+
+	<!-- volecity 配置 -->
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="contentNegotiationManager" ref="contentNegotiationManager">
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+				<bean
+					class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+					<property name="contentType" value="text/html;charset=UTF-8"></property>
+					<property name="cache" value="true" />
+					<property name="prefix" value="" />
+					<property name="suffix" value=".vm" />
+					<property name="toolboxConfigLocation" value="/WEB-INF/toolbox.xml" /><!--toolbox配置文件路径 -->
+					<property name="dateToolAttribute" value="date" /><!--日期函数名称 -->
+					<property name="numberToolAttribute">
+						<value>number</value>
+					</property>
+					<property name="order" value="1" />
+				</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"></bean>
+			</list>
+		</property>
+	</bean>
+
+<import resource="classpath*:xx.xml" />
+<import resource="classpath*:mybatis.xml"/>
+</beans>

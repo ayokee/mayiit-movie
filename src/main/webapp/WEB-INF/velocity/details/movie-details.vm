@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+ 	*{margin: 0;padding: 0;outline: none;}
+    body{background-color: #c7c7c3;font-family: "Microsoft Yahei";}
+    a{text-decoration: none;}
+    li{list-style-type: none;}
+    #details-page a{color: #136CB2;font-size: 15px;}
+    #details-page{width: 1008px;height: auto;margin: 0 auto;background: -webkit-linear-gradient(top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 7px);background: linear-gradient(top, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 7px);background-repeat: no-repeat;background-size: 100% 7px;background-color: #FFF;padding-top: 1px;padding-bottom: 1px;margin-top: -1px;margin-bottom: -1px;overflow: hidden;}
+    .header{width: 1008px;margin: 25px;overflow: hidden;}
+    .header .movie-details{width: 645px;height: 385px;border:1px solid #ddd;float: left;border-radius: 0 5px 0 0;}
+    .movie-details .movie-logo{width: 317px;height:auto;width: 214px;height: auto;float: left;padding-right:15px; }
+    .movie-details .movie-logo dl dd{text-align: center;}
+    .movie-details .movie-introduction{width:400px;height: auto;float: left;text-align: left;}
+    .movie-introduction h1 span:nth-child(1){color: #333;font-size: 27px;font-weight: normal;line-height: 27px;}
+    .movie-introduction h1 span:nth-child(2),.movie-introduction h1 span:nth-child(3){color: #666;font-size: 15px;font-weight: normal;}
+    .movie-introduction .introduction{padding: 3px 0 12px;border-bottom: 1px solid #ddd;}
+    .movie-introduction .introduction .su{color: #ccc;padding: 0 5px;}
+    .movie-introduction .comment {height: auto;padding: 10px 0;overflow: hidden;border-bottom: 1px solid #ddd;}
+    .movie-introduction .comment .xinxin{background: url(images/logo/xinxin.png) left no-repeat;float: left;width: 73px;height: 62px;background-size: 73px 62px;text-align: center;vertical-align: middle;line-height: 62px;}
+    .user-reviews{padding: 10px 0 5px;float: left;width: 327px;}
+    .score{width: 327px;float: left;font-size: 14px;margin-left:5px;}
+    .score span{padding: 0 2px;}
+    .details{font-size: 14px;color: #333;margin: 5px 0;}
+    .director h4{display: inline-block;}
+     .subnav{width: 300px;height: 195px;border:1px solid #ddd;float: left;margin: 0 20px;border-radius:5px;background-color:#f5f5f4;}
+     .subnav h3{padding: 10px 0;text-indent: 20px;font-size: 18px;font-weight: normal;}
+    .click{text-align: right;}
+    .click button{margin:10px 0 0 10px;height: 30px;border:none;background: #F7F3E8;padding: 0 5px;color:#333;border-radius: 5px;}
+    .main-right .ul-li{display: inline-block;margin: 0 auto;padding: 0 25px;}
+    .height{height: 40px;border-bottom: 1px solid #ddd;background: #efe3a4;width: 647px;float: left;}
+    .main-left{float: left;width: 647px;padding: 10px 0 20px;border-bottom: 1px solid #ddd;}
+    .main-left-nav h2,.main-left h2{color: #424242;font: 24px Arial,sans-serif normal;padding:5px 0;}
+	.main-left .video{width: 150px;height: auto;float: left;}
+	.main-left-nav{width: 647px;height: auto;float: left;}
+	.movies{height: auto;float: left;width: 246px;margin-right: 8px;}
+	.film-profile{width: 390px;height: auto;float: left;}
+	.film-profile-movie{float: left;width: 130px;}
+	.film-profile-movie dl dd button{width: 130px;height: 25px;font-weight: bold;border: none;background: #F3ECDA;border-radius: 3px;margin: 5px 0;}
+	.film-profile-movie dl dd .reduction{background: #F5D626;}
+	.movie-Film-details{width: 250px;font-size: 14px;text-align: justify;float: left;margin-left: 10px;}
+	</style>
+</head>
+<body>
+	<div id="details-page">
+		<div class="header">
+			<div class="movie-details">
+				<div class="movie-logo">
+					<dl>
+						<dt><img src="$!movie.images" alt="青年" width="214" height="317"></dt>
+					</dl>
+				</div>
+				<div class="movie-introduction">
+					<h1><span class="youth">$!movie.title</span><span> (I)</span><span>（<a href="">$date.format("yyyy",$!movie.years)</a>）</span></h1>
+					<div class="introduction">R <span class="su">|</span>$!movie.durations<span class="su">|</span><span><a href="">$!movie.genres</a></span><span class="su">|</span><span><a href="">$!movie.countries</a></span></div>
+					<div class="comment">
+						<div class="xinxin">7.5</div>
+						<div class="user-reviews">
+							<span>你的等级：</span>
+						</div>
+						<div class="score"><span>评分：</span><span>7.5</span><span>/10</span>从<span></span><a href="">9369用户</a><span>Metascore:</span><span><a href="">78 / 100</a></span></div>
+						<div class="score"><span>点评：</span><span><a href="">26用户</a></span><span class="su">|</span><span><a href="">104评论家</a></span><span class="su">|</span><span><a href="">9</a></span></div>
+					</div>
+					<p class="details">$!movie.summary</p>
+					<div class="director"><h4>导演：</h4><a href=""><span>$!movie.directors</span></a></div>
+					<div class="director"><h4>作者：</h4><a href=""><span>$!movie.writers</span></a></div>
+					<div class="director"><h4>演员：</h4><a href=""><span>$!movie.casts</span></a></div>
+
+				</div>
+				<div class="click"><button>分享</button></div>
+
+			</div>
+
+
+			<div class="subnav">
+				<h3>快速链接</h3>
+				<div class="main-right">
+					<div class="ul-li">
+						<ul>
+							<li><a href="">满投</a></li>
+							<li><a href="">琐事</a></li>
+							<li><a href="">引用</a></li>
+							<li><a href="">奖</a></li>
+							<li><a href="">留言板</a></li>
+						</ul>
+					</div>
+					<div class="ul-li">
+						<ul>
+							<li><a href="">情节概要</a></li>
+							<li><a href="">家长指导</a></li>
+							<li><a href="">用户评论</a></li>
+							<li><a href="">发行日期</a></li>
+							<li><a href="">公司信用</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="height"></div>
+			<div class="main-left">
+					<div class="video-img">
+					<h2>照片</h2>
+					<div>
+					  #foreach($p in $phtots)
+						<span><img src="$!p" alt=""></span>
+					  #end
+					</div>
+				</div>
+			</div>
+
+			<div class="main-left-nav">
+				<h2>喜欢这的人也喜欢…</h2>
+					<div class="movies">
+						<a href=""><img src="images/logo/movie-img.jpg" alt=""></a>
+						<a href=""><img src="images/logo/movie-img2.jpg" alt=""></a>
+						<a href=""><img src="images/logo/movie-img3.jpg" alt=""></a>
+						<a href=""><img src="images/logo/movie-img4.jpg" alt=""></a>
+						<a href=""><img src="images/logo/movie-img5.jpg" alt=""></a>
+						<a href=""><img src="images/logo/movie-img6.jpg" alt=""></a>
+					</div>
+					<div class="film-profile">
+						<div class="film-profile-movie">
+							<dl>
+								<dt><img src="images/logo/film-profile.jpg" alt=""></dt>
+								<dd><button class="reduction">添加到监视</button></dd>
+								<dd><button>下一页</button></dd>
+							</dl>
+							
+						</div>
+						<div class="movie-Film-details">
+							<p>大美（2013年）</p>
+							<p>认证：M18的戏剧</p>
+							<p>JEP Gambardella勾引他的方式通过几十年的罗马奢华的夜生活，但在他第六十五岁的生日，一个来自过去的冲击，JEP看起来过去的夜总会和派对找一个荒谬的永恒的风景，精致的美。</p>
+							<br/>
+							<p>导演：索伦蒂诺</p>
+							<p>明星：托妮瑟维洛，Carlo多内，</p>
+						</div>
+					</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

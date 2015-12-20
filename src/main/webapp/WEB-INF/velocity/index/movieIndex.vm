@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    *{margin: 0;padding: 0;outline: none;}
+    body{background-color: #c7c7c3;font-family: "Microsoft Yahei";}
+    a{text-decoration: none;}
+    input{border:none;}
+    .headerbar{width:100%;background: #fff;position: fixed;border-bottom: 1px solid #ddd;}
+    .topbar{height: 31px;line-height: 31px;}
+    .logobar{height: 50px;background-color: #fff;min-width:1200px;}
+    .logo{padding-top: 14px;float: left;width: 200px;}
+    .search{width:650px;overflow: hidden;float: left;padding-top:10px;}
+    .searh_text{width: 573px;height: 30px;line-height: 30px\9;float: left;padding: 0 5px;border: 1px solid #d3d3d3;}
+    .search_btn{width: 65px;height: 32px;font-size: 14px;float: right;border-radius:0 3px 3px 0;font-weight: 400px;}
+    .Login-registration{float: right;padding-top:10px;margin-right: 30px;}
+    .Login-registration button{width: 45px;height: 30px;background-color:#167ac6;border: none;border-radius: 3px;}
+     .Login-registration button a{color:#fff;font-size: 14px;}
+    .content{overflow: hidden;}
+    .content .nav-title{width: 200px;height:1700px;float: left;background-color: #F5F5F4;border-right:1px solid #ddd;margin-right: 40px;position: fixed;top:51px;}
+    .content .nav-title ul li{text-align: center;line-height: 30px;}
+    .content .nav-title li a:link,.content .nav-title li a:visited{color:#222222;text-decoration:none;} 
+    .content .nav-title li a:hover, .content .nav-title li a:hover{color:#fff;background:#4B8CCB;display:block;width: 180px;margin: 0 auto;}
+    .content .movie-tv dl dt img{width: 138px;height: 200px;}
+    .content .movie-tv dl{float: left;width: 25%;text-align: center;padding-bottom:30px;}
+    .content .movie-tv dl dd{color: #37a;font-size: 12px;padding-top:3px;}
+    .content .movie-tv dl dd em{font-style:normal;color: #e09015;margin-left: 5px;}
+    .content .movie-tv{width:700px;height: auto;overflow: hidden;background-color: #fff;margin:80px 0 0 240px;}
+    .content .movie-tv h3{text-indent: 10px;padding: 10px 0;overflow: hidden;width: 100%;font-size: 18px;}
+    .content .movie-tv .movie-list{width: 590px;height:500px;margin: 0 auto;border-bottom: 1px solid #ddd;overflow: hidden;padding-bottom: 50px;}
+ 
+    </style>
+</head>
+<body>
+  <div class="headerbar">
+      <div class="logobar">
+        <div class="logo">
+           <!--  <a href=""><img src="#" alt=""></a> -->
+        </div>  
+        <div class="search"> 
+            <input type="text" class="searh_text">
+            <input type="button" value="搜 索" class="search_btn"> 
+        </div>
+        <div class="Login-registration">
+           <button><a href="">登陆</a></button>
+            <button><a href="">注册</a></button>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="nav-title">
+        <ul>
+            <li><a href=""><span>首页</span></a></li>
+            <li><a href=""><span>热门</span></a></li>
+            <li><a href=""><span>选电影</span></a></li>
+            <li><a href=""><span>电视剧</span></a></li>
+            <li><a href=""><span>最新</span></a></li>
+            <li><a href=""><span>经典</span></a></li>
+            <li><a href=""><span>可播放</span></a></li>
+            <li><a href=""><span>喜剧</span></a></li>
+            <li><a href=""><span>欧美</span></a></li>
+            <li><a href=""><span>日本</span></a></li>
+            <li><a href=""><span>韩国</span></a></li>
+            <li><a href=""><span>悬疑</span></a></li>
+        </ul>
+    </div>
+    <div class="movie-tv">
+        <div class="movie-list">
+            <h3>热门</h3>
+            #foreach($ms in $movies)
+				<dl><a href="http://localhost:8080/mayiit-movie/movieDetails.htm?id=$!ms.id"><dt><img src="$!ms.images" alt=""></dt><dd>$!ms.title</dd></a></dl>
+			#end
+			#foreach($ts in $tvs)
+				<dl><a href="http://localhost:8080/mayiit-movie/movieDetails.htm?id=$!ts.id"><dt><img src="$!ts.images" alt=""></dt><dd>$!ts.title</dd></a></dl>
+			#end
+        </div>
+        <div class="movie-list">
+           	<div class="content-img">
+			<h3>最新电影</h3>
+			#foreach($m in $movie)
+				<dl><a href="http://localhost:8080/mayiit-movie/movieDetails.htm?id=$!m.id"><dt><img src="$!m.images" alt=""></dt><dd>$!m.title</dd></a></dl>
+			#end
+			</div>
+        </div>
+        <div class="movie-list">
+             <h3>最新电视剧</h3>
+            #foreach($t in $tv)
+				<dl><a href="http://localhost:8080/mayiit-movie/movieDetails.htm?id=$!t.id"><dt><img src="$!t.images" alt=""></dt><dd>$!t.title</dd></a></dl>
+			#end
+        </div>
+    </div>
+</div>
+</body>
+</html>
