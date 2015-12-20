@@ -81,7 +81,7 @@ public class IndexAction {
 		movie2Map.put("subtype", 1);
 		movie2Map.put("limitMin", limitMin);
 		movie2Map.put("limitMax", limitMax);
-		
+
 		List<Movie> tv = iMovieService.findAllTVForIndex(movie2Map);
 		model.put("tv",tv);
 	/****************************电   视   剧*****************************/	
